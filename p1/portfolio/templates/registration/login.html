@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="login" class="login-section">
+    <div class="container" style="height:450px">
+        <div class="login-form">
+            {% if form.errors %}
+                <p>{{ form.errors.error }}</p>
+            {% endif %}
+
+                    <h2 style="margin-bottom: 50px;">Вход</h2>
+            <form action="{% url 'login' %}" method="post">
+                <label for="id_username">Имя пользователя:</label>
+                <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+                <label for="id_password">Пароль:</label>
+                <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+                {% csrf_token %}
+                <div class="controls" style="display: flex; justify-content: space-between; align-items: center;">
+                    <button style="width: 150px;" class="btn btn-black" type="submit">Войти!</button>
+                    <a href="{% url 'registration' %}" style="width: 300px; color:#fff !important" class="btn btn-black">Зарегистрироваться!</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

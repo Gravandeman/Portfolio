@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ <section id="registration" class="registration-section">
+        <div class="container">
+            <div class="registration-form">
+
+               <form method="post" action="{% url 'registration' %}">
+
+                    <h2 style="margin-bottom: 50px;">Регистрация</h2>
+                    <div class="form-group">
+                        <label for="id_username">Имя пользователя:</label>
+                        <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+                    </div>
+                   <div class="form-group">
+    <label for="id_first_name">Имя и Отчество:</label>
+    <input type="text" name="first_name" autofocus="" autocapitalize="none" autocomplete="first_name" maxlength="150" required="" id="id_first_name">
+</div>
+<div class="form-group">
+    <label for="id_last_name">Фамилия:</label>
+    <input type="text" name="last_name" autofocus="" autocapitalize="none" autocomplete="last_name" maxlength="150" required="" id="id_last_name">
+</div>
+
+                    <div class="form-group">
+                       <label for="id_password">Пароль: (обратите внимание: • Ваш пароль не должен быть слишком похож на другую вашу личную информацию.
+• Ваш пароль должен содержать не менее 8 символов.
+• Ваш пароль не может быть часто используемым паролем.
+• Ваш пароль не может быть полностью цифровым.)</label>
+                        <input type="password" name="password1" autocomplete="current-password" required="" id="id_password1">
+                    </div>
+                   <div class="form-group">
+                       <label for="id_password">Повторите пароль:</label>
+                        <input type="password" name="password2" autocomplete="current-password" required="" id="id_password2">
+                    </div>
+                      {% csrf_token %}
+                    <div class="controls" style="display: flex; justify-content: space-between; align-items: center;" >
+                        <button style="width: 300px;" class="btn btn-black" type="submit">Зарегистрироваться!</button>
+                        <a style="width: 150px; color:#fff !important" class="btn btn-black" href="{% url 'login' %}" role="button">Войти!</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}

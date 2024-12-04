@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container">
+    <h1>Ответ на вопрос</h1>
+
+    <h2>Вопрос:</h2>
+    <p>{{ question.question_text }}</p>
+
+    <h2>Ответ:</h2>
+    {% if question.answer %}
+      <p>{{ question.answer }}</p>
+      <p>Ответил(а): {{ question.answered_by }}</p>
+    {% else %}
+      <p>Пока нет ответа.</p>
+    {% endif}
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-black">Ответить</button>
+    </form>
+
+    <a href="{% url 'questions' %}">Назад к вопросам</a>
+  </div>
+{% endblock %}

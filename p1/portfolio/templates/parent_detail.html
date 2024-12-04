@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block nav%}
+<ul id="navbar" class="header-main-nav">
+                <li><a href="/" class="nav-link  ">Главная</a></li>
+                <li><a href="/about" class="nav-link">Обо мне</a></li>
+                <li><a href="/news" class="nav-link active">Новости</a></li>
+                <li><a href="/portfolio" class="nav-link">Методический портфель</a></li>
+                <li><a href="/parent" class="nav-link">Родителям</a></li>
+                <li><a href="/question" class="nav-link">Вопросы</a></li>
+                <li><a href="/review" class="nav-link">Отзывы</a></li>
+                {% if user.is_authenticated %}
+   <li> <a style="display:flex; align-items:center; gap:5px" href="{% url 'logout' %}"><iconify-icon icon="majesticons:door-enter-line"></iconify-icon><h8>Выйти</h8></a>
+   </li>
+   {% if user.is_superuser %}
+    <a href="{% url 'add_news' %}" style="margin-left: 20px;">Добавить запись</a>
+    {% endif %}{% else %}
+   <li> <a style="display:flex; align-items:center; gap:5px" href="{% url 'login' %}"><iconify-icon icon="iconamoon:enter"></iconify-icon><h8>Войти</h8></a>
+   </li>{% endif %}
+            </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.content }}</p>
+        <img src="{{ post.image.url }}" alt="article-img" width="100%" height="auto">
+    </div>
+{% endblock %}

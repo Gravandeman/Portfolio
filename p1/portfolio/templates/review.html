@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block nav %}
+
+<style>
+.rating-area {
+	overflow: hidden;
+	width: 265px;
+	margin-top:4%;
+left:0 !important;
+
+}
+.rating-area:not(:checked) > input {
+	display: none;
+}
+.rating-area:not(:checked) > label {
+	float: right;
+	width: 42px;
+	padding: 0;
+	cursor: pointer;
+	font-size: 32px;
+	line-height: 32px;
+	color: lightgrey;
+
+}
+.rating-area:not(:checked) > label:before {
+	content: '★';
+}
+.rating-area > input:checked ~ label {
+	color: gold;
+
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+	color: black;
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+	color: black;
+
+}
+.rate-area > label:active {
+	position: relative;
+}
+
+    .rating-result {
+	width: 265px;
+	margin: 0 auto;
+}
+.rating-result span {
+	padding: 0;
+	font-size: 32px;
+	margin: 0 3px;
+	line-height: 1;
+	color: lightgrey;
+
+}
+.rating-result > span:before {
+	content: '★';
+}
+.rating-result > span.active {
+	color: black;
+
+}
+
+</style>
+
+
+<ul id="navbar" class="header-main-nav">
+    <li><a href="/" class="nav-link  ">Главная</a></li>
+    <li><a href="/about" class="nav-link">Обо мне</a></li>
+    <li><a href="/news" class="nav-link">Новости</a></li>
+    <li><a href="/portfolio" class="nav-link">Методический портфель</a></li>
+    <li><a href="/parent" class="nav-link">Родителям</a></li>
+    <li><a href="/question" class="nav-link">Вопросы</a></li>
+    <li><a href="/review" class="nav-link active">Отзывы</a></li>
+ {% if user.is_authenticated %}
+   <li> <a style="display:flex; align-items:center; gap:5px" href="{% url 'logout' %}"><iconify-icon icon="majesticons:door-enter-line"></iconify-icon><h8>Выйти</h8></a>
+   </li> {% else %}
+   <li> <a style="display:flex; align-items:center; gap:5px" href="{% url 'login' %}"><iconify-icon icon="iconamoon:enter"></iconify-icon><h8>Войти</h8></a>
+   </li>{% endif %}
+</ul>
+{% endblock %}
+
+{% block content %}
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <h2 style="margin-bottom: 3%;">Отзывы</h2>
+            <div class="reviews-container">
+                {% for review in reviews %}
+                <div class="review">
+                    <div class="user" style="display:flex; gap:5px; align-items:center">
+                        <iconify-icon icon="oi:person"></iconify-icon>
+                        <h3>{{ review.author.first_name }}</h3>
+                        <h3>{{ review.author.last_name }}</h3>
+                    </div>
+
+                    <p>{{ review.text }}</p>
+                        <div class="rating-result">
+                            {% for i in "12345" %}
+                                {% if i|add:"0" <= review.rating %}
+                                    <span class="active"></span>
+                                {% else %}
+                                    <span></span>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                </div>
+                {% endfor %}
+            </div>
+ {% if user.is_authenticated %}
+            <div class="add-review" style="margin-top: 3%; display: flex; flex-direction: column; gap: 30px;">
+                <h3>Добавить отзыв!</h3>
+       <form method="post" action="{% url 'submit_review' %}">
+    {% csrf_token %}
+
+    <input type="hidden" id="user-rating" name="user_rating" value="0">
+
+    <textarea style="	overflow: auto;" id="user-review" name="user_review" placeholder="Оставьте ваш отзыв здесь" rows="4"></textarea>
+           <div class="rating-area">
+        <input type="radio" id="star-5" name="rating" value="5">
+        <label for="star-5" title="Оценка «5»"></label>
+        <input type="radio" id="star-4" name="rating" value="4">
+        <label for="star-4" title="Оценка «4»"></label>
+        <input type="radio" id="star-3" name="rating" value="3">
+        <label for="star-3" title="Оценка «3»"></label>
+        <input type="radio" id="star-2" name="rating" value="2">
+        <label for="star-2" title="Оценка «2»"></label>
+        <input type="radio" id="star-1" name="rating" value="1">
+        <label for="star-1" title="Оценка «1»"></label>
+    </div>
+    <button type="submit" class="btn btn-black" style="width: 300px; color:#fff !important">Оставить отзыв</button>
+</form>
+
+            </div>
+            {% else %}
+            <div style="width:600px; margin-left:30%;">
+              <p>Чтобы оставить отзыв, необходимо войти или зарегистрироваться.</p>
+        <div class="controls" style="display: flex; justify-content: space-between; align-items: center;">
+                    <a href="{% url 'login' %}" style="width: 200px; color:#fff !important; margin-top:20px !important;" class="btn btn-black">Войти!</a>
+                    <a href="{% url 'registration' %}" style="width: 300px; color:#fff !important;  margin-top:20px !important;" class="btn btn-black">Зарегистрироваться!</a>
+                </div>
+            </div>
+
+        {% endif %}
+        </div>
+    </section>
+<script>
+    const ratingArea = document.querySelector('.rating-area');
+    const userRatingInput = document.getElementById('user-rating');
+
+    ratingArea.addEventListener('change', (event) => {
+        const selectedRating = event.target.value;
+        userRatingInput.value = selectedRating;
+    });
+</script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</html>
+{% endblock %}

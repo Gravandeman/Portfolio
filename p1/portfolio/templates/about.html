@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block nav %}
+    <ul id="navbar" class="header-main-nav">
+        <li><a href="/" class="nav-link">Главная</a></li>
+        <li><a href="/about" class="nav-link active">Обо мне</a></li>
+        <li><a href="/news" class="nav-link">Новости</a></li>
+        <li><a href="/portfolio" class="nav-link">Методический портфель</a></li>
+        <li><a href="/parent" class="nav-link">Родителям</a></li>
+        <li><a href="/question" class="nav-link">Вопросы</a></li>
+        <li><a href="/review" class="nav-link">Отзывы</a></li>
+         {% if user.is_authenticated %}
+   <li> <a style="display:flex; align-items:center; gap:5px" href="{% url 'logout' %}"><iconify-icon icon="majesticons:door-enter-line"></iconify-icon><h8>Выйти</h8></a>
+   </li> {% else %}
+   <li> <a style="display:flex; align-items:center; gap:5px" href="{% url 'login' %}"><iconify-icon icon="iconamoon:enter"></iconify-icon><h8>Войти</h8></a>
+   </li>{% endif %}
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <section id="home" class="billboard-wrap">
+        <div class="container about-wrap" >
+            <h1 style="text-align:center;">Обо мне</h1>
+            <div class="container about-content" style="margin-left:5%">
+                <div class="col-md-6" style="display: flex; flex-direction: column; gap: 25px; padding-right:30px">
+                    <h1 style="color: #141414;">Вершинина Наталья Александровна</h1>
+                    <h3>Должность: Воспитатель</h3>
+                    <p align="justify">Окончила ГБПОУ Архангельской области «Архангельский педагогический
+                        колледж» в 2019 году по направлению «Дошкольное образование»,
+                        специальность – воспитатель детей дошкольного возраста (диплом).
+                    </p>
+                    <p align="justify">Мне бы хотелось, чтобы педагоги и родители относились к детям не как к полностью от них зависимым людям,
+                    не просто вмешиваясь в их жизнь, а как к партнерам.
+                    Нет, не всегда, а только тогда, когда это действительно нужно.
+                    Важно уметь понимать, когда ребенку нужна ваша поддержка и внимание.
+                    </p>
+                    <p align="justify">Сейчас, по-моему, мы часто требуем друг от друга слишком многого.
+                    Вместо этого, давайте просто принимать друг друга такими, какие мы есть, и поддерживать в нужный момент.
+                    Я каждый день вижу, как даже маленькие шаги в развитии и становлении наших воспитанников имеют значение.
+                    </p>
+                    <p align="justify">Ведь всё начинается с детства! Эта фраза становится яркой реальностью при встрече с моими бывшими воспитанниками, которые уже подросли.
+                    Я горжусь их успехами и радуюсь тому, что рядом с ними заботливые наставники.
+                    </p>
+                    <p align="justify">
+                        Помогаем друг другу, поддерживаем и наставляем в нужный момент — вот в чем суть роли воспитателя в современном мире.
+                        Так просто и так важно.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="main-logo"><img style="width:80%"  src="{% static 'images/background/logo-3.jpg' %}" alt="main-logo"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-wrap" style="background-color: #f7f7f7; padding: 20px;">
+        <div class="container">
+            <h1 style="margin-bottom: 3%; margin-left: 35%; font-size: 2rem; color: #333;">Курсы повышения квалификации</h1>
+
+            <div class="item-content" style="margin: 50px 0; display: flex; align-items: center;">
+                <div class="quotation-img" style="width: 100px; margin-right: 20px;">
+                                        <img src="{% static 'images/resource/google-docs.png' %}" alt="quotation-icon" style="width:50px; height: auto;">  </div>
+                <p class="item-paragraph" style="font-size: 1rem; color: #444;">
+                    В 2020 г. «Создание специальных образовательных условий для детей с ОВЗ в рамках ФГОС ДО» (Негосударственное образовательное частное учреждение организации дополнительного профессионального образования «Актион-МЦФЭР», удостоверение);
+                </p>
+            </div>
+             <div class="item-content" style="margin: 50px 0; display: flex; align-items: center;">
+                <div class="quotation-img" style="width: 62px; margin-right: 20px;">
+                                        <img src="{% static 'images/resource/google-docs.png' %}" alt="quotation-icon" style="width:50px; height: auto;">  </div>
+                <p class="item-paragraph" style="font-size: 1rem; color: #444;">
+                    В 2021 г. прошла обучение по санитарно-просветительской программе
+«Основы здорового питания для дошкольников» (сертификат); </p>
+            </div>
+             <div class="item-content" style="margin: 50x 0; display: flex; align-items: center;">
+                <div class="quotation-img" style="width: 80px; margin-right: 20px;">
+                                       <img src="{% static 'images/resource/google-docs.png' %}" alt="quotation-icon" style="width:50px; height: auto;"></div>
+                <p class="item-paragraph" style="font-size: 1rem; color: #444;">
+                    В декабре 2021 г. «Художественное конструирование в детском саду:
+современные техники и приемы работы с бумагой» (ГАОУ ДПА
+«Архангельский областной институт открытого образования»,
+удостоверение);</p>
+            </div>
+             <div class="item-content" style="margin: 50px 0; display: flex; align-items: center;">
+                <div class="quotation-img" style="width: 70px; margin-right: 20px;">
+                     <img src="{% static 'images/resource/google-docs.png' %}" alt="quotation-icon" style="width:50px; height: auto;">               </div>
+                <p class="item-paragraph" style="font-size: 1rem; color: #444;">
+                     В марте 2022 г. «Наставничество в образовании: модели, программы и
+инструменты» (ГАОУ ДПА «Архангельский областной институт открытого
+образования», удостоверение);</p>
+            </div>
+             <div class="item-content" style="margin: 50px 0; display: flex; align-items: center;">
+                <div class="quotation-img" style="width: 90px; margin-right: 20px;">
+                    <img src="{% static 'images/resource/google-docs.png' %}" alt="quotation-icon" style="width:50px; height: auto;">
+                </div>
+                <p class="item-paragraph" style="font-size: 1rem; color: #444;">
+                    В 2022 году прошла профессиональную переподготовку в АНО ДПО
+«Московская академия профессиональных компетенций» по направлению
+«Дошкольное образование. Воспитатель логопедической группы» (диплом);</p>
+            </div>
+<div class="item-content" style="margin: 50px 0; display: flex; align-items: center;">
+                <div class="quotation-img" style="width: 80px; margin-right: 20px;">
+                    <img src="{% static 'images/resource/google-docs.png' %}" alt="quotation-icon" style="width:50px; height: auto;">
+                </div>
+                <p class="item-paragraph" style="font-size: 1rem; color: #444;">
+                   В декабре 2023 г. "Воспитатель года: готовимся к конкурсу профессионального мастерства"(ГАОУ ДПА «Архангельский областной институт открытого
+образования», удостоверение).</p>
+            </div>
+
+
+        </div>
+    </section>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+{% endblock %}

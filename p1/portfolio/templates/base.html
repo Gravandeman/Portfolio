@@ -1,0 +1,376 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <style>
+
+
+
+.header-menu-toggle {
+  display: none;
+  height: 42px;
+  width: 42px;
+  line-height: 42px;
+  font-family: "Lora", serif;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all .3s;
+  position: absolute;
+  right: 32px;
+  top: 33px;
+}
+
+.header-menu-toggle:hover,
+.header-menu-toggle:focus {
+  color: #ffffff;
+}
+
+.header-menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin-top: -1px;
+  background-color: #111;
+  transition: all .5s;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  position: absolute;
+  top: 50%;
+  left: 9px;
+  right: auto;
+  bottom: auto;
+}
+
+.header-menu-toggle span::before,
+.header-menu-toggle span::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  position: absolute;
+  left: 0;
+  transition: all .5s;
+}
+
+.header-menu-toggle span::before {
+  top: -10px;
+}
+
+.header-menu-toggle span::after {
+  bottom: -10px;
+}
+
+.header-menu-toggle.is-clicked span {
+  background-color: white;
+  transition: all .1s;
+}
+
+.header-menu-toggle.is-clicked span::before,
+.header-menu-toggle.is-clicked span::after {
+  background-color: #111;
+}
+
+.header-menu-toggle.is-clicked span::before {
+  top: 0;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.header-menu-toggle.is-clicked span::after {
+  bottom: 0;
+  -webkit-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+
+
+
+.login-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #f8f8f8;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-form h2 {
+    color: #333;
+}
+
+.login-form p.error-message {
+    color: #ff0000;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+.login-form button {
+  color: #fff;
+  display: inline-block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  box-sizing: border-box;
+  padding: 20px 40px;
+  font-weight: 400;
+  line-height: auto;
+  overflow: hidden;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 75px;
+  border-radius: 0;
+  transition-duration: 0.3s;
+}
+button[type="submit"]{
+background:#111 !important;
+  color: #fff !important;
+  display: inline-block !important;
+  font-family: 'Oswald', sans-serif !important;
+  font-size: 18px !important;
+  box-sizing: border-box !important;
+  padding: 20px 40px !important;
+  font-weight: 400 !important;
+  line-height: auto !important;
+  overflow: hidden !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  margin-top: 75px !important;
+  border-radius: 0 !important;
+  transition-duration: 0.3s !important;
+}
+
+button[type="submit"]:hover{
+   color: #fff !important;
+  background-color: #444 !important;
+  border: none; !important}
+.login-form button:hover {
+    color: #fff;
+  background-color: #444;
+  border: none;
+}
+button {
+  color: #fff;
+  display: inline-block;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  box-sizing: border-box;
+  padding: 20px 40px;
+  font-weight: 400;
+  line-height: auto;
+  overflow: hidden;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 75px;
+  border-radius: 0;
+  transition-duration: 0.3s;
+}
+
+button .iconify{
+  margin-left: 8px;
+}
+
+/* Btn black */
+
+button.btn-black{
+  background: #111;
+  border: none;
+}
+
+button.btn-black:hover{
+  color: #fff;
+  background-color: #444;
+  border: none;
+}
+  a{
+  text-decoration: none !important;
+  cursor: pointer !important;
+  color: #111 !important;
+}
+        .link:hover{
+            color:#ccc !important;
+        }
+ @media screen and (min-width:980px) {
+ .header-menu-toggle{display:none !important;}
+ .inform{
+display:flex !important;
+ }
+ .inform-new{
+ display:none !important}
+ }
+
+
+        @media screen and (max-width:1000px) {
+.header-menu-toggle{
+margin:0 auto;
+}
+  .header-wrap {
+    height: 114px;
+    position: fixed;
+    top: 0;
+  }
+ .inform{
+display:none !important;
+ }
+ .inform-new{
+ display:flex !important}
+        .copyright{
+        display:none !important;
+        }
+        .inform{
+        width:480px;
+        }
+        .about-content{
+        margin-top:50px;
+        }
+        .gallery-wrap{
+        margin-top:100px;
+        }
+        .articles-wrap{
+        margin-top:110px;
+        }
+        .contact-wrap{
+         margin-top:110px;
+        }
+        .reviews-section{
+        margin-top:110px;
+        }
+
+  .header-wrap .header-logo {
+    display:none !important;
+  }
+        .billboard-bg-img{
+        margin-top:240px;
+        margin-bottom:30px;
+
+        }
+
+
+
+    </style>
+
+
+    <title>Вершинина Наталья Александровна</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css' %}">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rozha+One&display=swap" rel="stylesheet">
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+
+    <div id="preloader">
+      <div id="loader"></div>
+    </div>
+
+    <!-- Site Header -->
+    <header class="header-wrap">
+
+        <div class="header-logo">
+            Муниципальное автономное дошкольное образовательное учреждение Центр развития ребенка "Детский сад № 3 "Морозко"
+            <h2>Вершинина Наталья Александровна</h2>
+        </div>
+
+
+
+
+        <nav id="header-nav-wrap" class="header-nav-wrap">
+             {% block nav %}{% endblock %}
+
+
+
+        </nav>
+
+ <a id="header-menu-toggle" class="header-menu-toggle" href="#" onclick="toggleDropdown(event)"><span>Menu</span></a>
+
+
+    </header>
+
+    <!-- End Site Header -->
+ {% block content %}{% endblock %}
+    <!--Main Footer-->
+    <footer class="main-footer" style="background: #141414; display:flex !important; justify-content:space-between; align-items:center; padding: 0 5%">
+
+
+        <!--Footer Bottom-->
+        <div class="footer-bottom container" style="display: flex; flex:1">
+            <div class="bottom-logo" style="max-width: 500px; display:flex; align-items:center">
+                <img style="width:17%" src="{% static 'images/background/logotip.png' %}" alt="">
+                <div class="inform" style="display:flex; flex-direction:column">
+                    Муниципальное автономное дошкольное образовательное учреждение Центр развития ребенка "Детский сад № 3 "Морозко"
+                <a class="link" style="padding-top: 2%; color:#fff !important;" href="//morozko3.ru">https://morozko3.ru</a>
+                </div>
+                <div class="inform-new" style="display:flex; flex-direction:column">
+                    "Детский сад № 3 "Морозко"
+                <a class="link" style="padding-top: 2%; color:#fff !important;" href="//morozko3.ru">https://morozko3.ru</a>
+                </div>
+
+            </div>
+            </div>
+
+            <div style="color:#fff !important; flex:1; justify-content:center; display:flex; gap:5px" class="copyright">@ 2023 <h8 >Воспитатель Вершинина Наталья Александровна</h8></div>
+            <ul class="header-social " style="display: flex; justify-content: center; align-items:center; padding:0; margin:0; flex:1">
+                <a href="https://vk.com/club138473125">
+                    <svg class="svg-icon" style="color:#fff" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path fill="currentColor" d="m9.489.004l.729-.003h3.564l.73.003l.914.01l.433.007l.418.011l.403.014l.388.016l.374.021l.36.025l.345.03l.333.033c1.74.196 2.933.616 3.833 1.516c.9.9 1.32 2.092 1.516 3.833l.034.333l.029.346l.025.36l.02.373l.025.588l.012.41l.013.644l.009.915l.004.98l-.001 3.313l-.003.73l-.01.914l-.007.433l-.011.418l-.014.403l-.016.388l-.021.374l-.025.36l-.03.345l-.033.333c-.196 1.74-.616 2.933-1.516 3.833c-.9.9-2.092 1.32-3.833 1.516l-.333.034l-.346.029l-.36.025l-.373.02l-.588.025l-.41.012l-.644.013l-.915.009l-.98.004l-3.313-.001l-.73-.003l-.914-.01l-.433-.007l-.418-.011l-.403-.014l-.388-.016l-.374-.021l-.36-.025l-.345-.03l-.333-.033c-1.74-.196-2.933-.616-3.833-1.516c-.9-.9-1.32-2.092-1.516-3.833l-.034-.333l-.029-.346l-.025-.36l-.02-.373l-.025-.588l-.012-.41l-.013-.644l-.009-.915l-.004-.98l.001-3.313l.003-.73l.01-.914l.007-.433l.011-.418l.014-.403l.016-.388l.021-.374l.025-.36l.03-.345l.033-.333c.196-1.74.616-2.933 1.516-3.833c.9-.9 2.092-1.32 3.833-1.516l.333-.034l.346-.029l.36-.025l.373-.02l.588-.025l.41-.012l.644-.013l.915-.009ZM6.79 7.3H4.05c.13 6.24 3.25 9.99 8.72 9.99h.31v-3.57c2.01.2 3.53 1.67 4.14 3.57h2.84c-.78-2.84-2.83-4.41-4.11-5.01c1.28-.74 3.08-2.54 3.51-4.98h-2.58c-.56 1.98-2.22 3.78-3.8 3.95V7.3H10.5v6.92c-1.6-.4-3.62-2.34-3.71-6.92Z"/></svg>
+                </a>
+
+            </ul>
+        </div>
+
+    </footer>
+    <!-- End Main Footer -->
+
+    <!-- Video Popup -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><svg class="bi" width="40" height="40"><use xlink:href="#close-sharp"></use></svg></button>
+                    <div class="ratio ratio-16x9">
+                      <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+<script src="{% static 'js/script.js' %}"></script>
+<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+<script>
+
+function toggleDropdown(event) {
+    event.preventDefault();
+    const dropdownMenu = document.getElementById('header-nav-wrap');
+    if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+        dropdownMenu.style.display = 'block';
+    } else {
+        dropdownMenu.style.display = 'none';
+    }
+}
+</script>
+</body>
+</html>
+
+

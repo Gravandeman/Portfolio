@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container" style="max-width:1000px; display:flex; flex-direction:column;justify-content:center;align-items:center">
+    <div style="width:462px;display: flex; justify-content: space-between; align-items: center;">
+       <a href="/parent" class="nav-link active">Назад</a>
+      <h1>Добавление записи</h1>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" id="post-form">
+      {% csrf_token %}
+      <p>
+        <label for="id_title">Название:</label>
+        <input type="text" name="title" maxlength="200" required="" id="id_title">
+      </p>
+
+      <p>
+        <label for="id_content">Текст:</label>
+        <textarea name="content" cols="40" rows="10" required="" id="id_content"></textarea>
+      </p>
+
+      <p>
+        <label for="id_image">Изображение:</label>
+        <input type="file" name="image" accept="image/*" id="id_image">
+      </p>
+      <div id="error-message" style="color: red;"></div>
+      <button style="margin-top:1% !important; margin-bottom:3% !important" class="btn btn-black" type="submit" id="submit-button">Добавить новость</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#submit-button').click(function() {
+        var title = $('#id_title').val();
+        var content = $('#id_content').val();
+        var image = $('#id_image').val();
+
+        if (title && content && image) {
+          $('#news-form').submit();
+        } else {
+          $('#error-message').text('Пожалуйста, заполните все поля и загрузите изображение.');
+        }
+      });
+    });
+  </script>
+{% endblock %}

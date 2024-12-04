@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block nav %}
+
+<style>
+    .menu-toggle {
+        display: none;
+        cursor: pointer;
+    }
+
+    .header-main-nav {
+        display: flex;
+        list-style: none;
+    }
+
+    .header-main-nav li {
+        margin: 0 10px;
+    }
+
+    .header-main-nav.hidden {
+        display: none;
+    }
+</style>
+
+    <div class="menu-toggle" onclick="toggleDropdown()">Меню</div>
+    <ul id="navbar" class="header-main-nav">
+        <li><a href="/" class="nav-link active">Главная</a></li>
+        <li><a href="/about" class="nav-link">Обо мне</a></li>
+        <li><a href="/news" class="nav-link">Новости</a></li>
+        <li><a href="/portfolio" class="nav-link">Методический портфель</a></li>
+        <li><a href="/parent" class="nav-link">Родителям</a></li>
+        <li><a href="/question" class="nav-link">Вопросы</a></li>
+        <li><a href="/review" class="nav-link">Отзывы</a></li>
+        {% if user.is_authenticated %}
+            <li>
+                <a style="display: flex; align-items: center; gap: 5px" href="{% url 'logout' %}">
+                    <iconify-icon icon="majesticons:door-enter-line"></iconify-icon>
+                    <span>Выйти</span>
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <a style="display: flex; align-items: center; gap: 5px" href="{% url 'login' %}">
+                    <iconify-icon icon="iconamoon:enter"></iconify-icon>
+                    <span>Войти</span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+
+{% endblock %}
+
+
+
+{% block content %}
+<section id="home" class="billboard-wrap">
+    <br>
+    <br>
+    <br>
+    <div class="billboard-bg-img" style="background-size: cover;background-position: center;">
+        <div class="container billboard-content">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="main-logo"><img src="{% static 'images/background/main-logo-2.jpg' %}" alt="main-logo"></div>
+                </div>
+                <div class="col-md-6">
+                    <h1 style="  margin-bottom:0 !important;" >Здравствуйте, </h1>
+                    <h1 style="  text-transform: lowercase;">уважаемые гости!</h1>
+                    <p align="justify">Место работы: Муниципальное автономное дошкольное образовательное
+                        учреждение Центр развития ребенка – «Детский сад № 3 «Морозко» с
+                        25.08.2011 года сначала в группе «Березка», а с 01.09.2020 года в группе
+                        компенсирующей направленности для детей с ТНР (ОНР) «Брусничка».</p>
+                        <p class="italic-text" align="justify"><i>Высшее искусство, которым обладает учитель, – это умение пробудить радость
+                        от творческого выражения и получения знаний. Альберт Эйнштейн.</i></p>
+                        <br>
+                    <a class="btn btn-outline" href="/about" role="button">Читать далее...<span class="iconify" data-icon="la:arrow-right"></span></a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="articles" class="articles-wrap" style="padding: 2%;">
+    <div class="container">
+        <h1 style="margin-left: 3%; margin-bottom: 5%;">Новости</h1>
+        <div class="row">
+            {% for news_home in news_list %}
+            <!-- Article Block -->
+            <div class="col-md-4 article-post-item">
+
+                <div class="article-img">
+                    <a href="{% url 'news_detail' news_home.id %}"><img src="{{ news_home.image.url }}" alt="article-img" width="100%" height="auto"></a>
+                </div>
+                <div class="lower-content">
+                    <h3 align="center"><a href="{% url 'news_detail' news_home.id %}">{{ news_home.title }}</a></h3>
+                 </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</section>
+
+
+
+{% endblock %}
