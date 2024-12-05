@@ -122,7 +122,7 @@ def ask_question(request):
             Question.objects.create(question_text=question_text, asked_by=user)
             return redirect('question')  # Перенаправляем пользователя обратно на страницу с вопросами
         else:
-            # Если текст вопроса пустой, добавьте соответствующую обработку ошибки
+            # Если текст вопроса пустой
             pass
 
     return render(request, 'question.html')
@@ -130,7 +130,7 @@ def ask_question(request):
 def question_view(request):
     questions = Question.objects.all()  # Извлекаем все вопросы из базы данных
     context = {'questions': questions}  # Создаем контекст с вопросами
-    return render(request, 'question.html', context)  # Отправляем контекст в ваш шаблон
+    return render(request, 'question.html', context)  # Отправляем контекст в шаблон
 
 def question(request):
     questions = Question.objects.all()  # Получаем все вопросы из базы данных
@@ -145,13 +145,13 @@ def answer_question(request, question_id):
             # Найти вопрос по идентификатору
             question = Question.objects.get(pk=question_id)
 
-            # Проверить, что текущий пользователь авторизован (если нужно)
+            # Проверить, что текущий пользователь авторизован 
             if request.user.is_authenticated:
                 # Сохранить ответ
                 question.answer = answer_text
                 question.save()
             else:
-                # Пользователь не авторизован, обработайте это по вашему усмотрению, например, перенаправьте на страницу входа
+                # Пользователь не авторизован, перенаправьте на страницу входа
                 return redirect('login')  # Замените 'login' на имя вашей страницы входа
 
         except Question.DoesNotExist:
